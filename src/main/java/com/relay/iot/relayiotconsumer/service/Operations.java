@@ -1,5 +1,8 @@
 package com.relay.iot.relayiotconsumer.service;
 
+/**
+ * @author Kunal Malhotra
+ */
 public enum Operations {
 
     AVERAGE, MEDIAN, MAX, MIN;

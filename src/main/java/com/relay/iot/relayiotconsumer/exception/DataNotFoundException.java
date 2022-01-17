@@ -1,7 +1,7 @@
 package com.relay.iot.relayiotconsumer.exception;
 
 /**
- * @author Kunal
+ * @author Kunal Malhotra
  */
 public class DataNotFoundException extends RuntimeException {
 

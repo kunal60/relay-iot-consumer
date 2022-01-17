@@ -6,9 +6,17 @@ import org.springframework.stereotype.Component;
 
 import java.time.OffsetDateTime;
 
+/**
+ * @author Kunal Malhotra
+ */
 @Component
 public class IotDataMapper {
 
+    /**
+     * This method converts iot data to mongo DB supported data
+     * @param sensorData
+     * @return
+     */
     public IotEntity eventToEntityConvertor(IotData sensorData) {
         return IotEntity.builder()
                 .name(sensorData.getName())

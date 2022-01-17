@@ -1,5 +1,6 @@
 package com.relay.iot.relayiotconsumer.controller;
 
+import com.relay.iot.relayiotconsumer.data.Constants;
 import com.relay.iot.relayiotconsumer.service.IotOperationService;
 import com.relay.iot.relayiotconsumer.util.RequestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +39,10 @@ public class IotController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Map<String, String> map = new HashMap<>();
-        map.put("from", from.get());
-        map.put("to", to.get());
-        map.put("eventType", eventType.isPresent() ? eventType.get() : null);
-        map.put("clusterId", clusterId.isPresent() ? clusterId.get() : null);
+        map.put(Constants.START_DATE, from.isPresent() ? from.get() : null);
+        map.put(Constants.END_DATE, to.isPresent() ? to.get() : null);
+        map.put(Constants.EVENT_TYPE, eventType.isPresent() ? eventType.get() : null);
+        map.put(Constants.CLUSTER_ID, clusterId.isPresent() ? clusterId.get() : null);
 
 
         return new ResponseEntity<>(iotOperationService.execute(operation, map), HttpStatus.OK);
