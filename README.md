@@ -1,5 +1,10 @@
 # relay-iot-consumer
 
+docker kill $(docker ps -q)
+docker system prune -a
+docker container ls
+docker image ls
+
 For Max
 db.getCollection('iot_data').find({timestamp: { $gte: '2022-01-17T17:09:38.706056800Z', $lte: "2022-01-17T17:10:17.880046Z" }}).sort({"value" : -1}).limit(1)
 

@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mongo:
+    container_name: docker-mongo
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    hostname: mongo
+
+  spring:
+    depends_on:
+      - mongo
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    image: relay-iot-consumer:1.0
+    container_name: relay-iot-consumer
+    ports:
+      - "8081:8081"
+    hostname: spring
+    links:
+      - mongo

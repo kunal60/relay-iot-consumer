@@ -88,6 +88,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>relay-iot-consumer</finalName>
 	</build>
 
 </project>
