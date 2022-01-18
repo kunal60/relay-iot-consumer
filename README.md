@@ -16,6 +16,21 @@ Do the following commands in a shell:
     $ docker-compose up
     
     
+````curlrc
+curl --location --request POST 'http://localhost:8081/authenticate' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "userName": "kunal",
+    "password": "admin"
+}'
+````    
+
+````curlrc
+curl --location --request GET 'http://localhost:8081/iotData/operation/max?from=2022-01-17T17:09:38.706056800Z&to=2022-01-17T17:10:17.880046Z' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrdW5hbCIsImV4cCI6MTY0MjU3NDQwMCwiaWF0IjoxNjQyNTM4NDAwfQ.QHfdCad3CkNOGsW5zOcX1Z012i_GWmtQiOGMz9RE5kQ'
+````   
+    
 #Some Useful Docker commands 
 #stop a container
 docker stop 8872fe163331   
