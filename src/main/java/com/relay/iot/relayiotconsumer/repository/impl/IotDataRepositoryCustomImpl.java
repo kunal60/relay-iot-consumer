@@ -47,7 +47,7 @@ public class IotDataRepositoryCustomImpl implements IotRepositoryCustom {
         AggregationOperation limit = Aggregation.limit(1);
         List<AggregationOperation> operationsList = new ArrayList<>();
         if (clusterId != null ) {
-            operationsList.add(Aggregation.match(Criteria.where("clusterId").is(clusterId)));
+            operationsList.add(Aggregation.match(Criteria.where("clusterId").is(Long.valueOf(clusterId))));
         }
         if (StringUtils.hasText(eventType)) {
             operationsList.add(Aggregation.match(Criteria.where("type").is(eventType)));
