@@ -1,5 +1,28 @@
 # relay-iot-consumer
 
+## Prerequisite
+
+You'll need:
+ * Java 11
+ * Maven 3.5.x
+ * a environment variable JAVA_HOME pointing to your JAVA 11 installation
+
+## Quickstart
+
+Do the following commands in a shell:
+
+    $ mvn clean
+    $ mvn install
+    $ docker-compose up
+    
+    
+#Some Useful Docker commands 
+#stop a container
+docker stop 8872fe163331   
+#Remove a stopped container
+docker container rm 8872fe163331
+
+docker image rm 788b222dc8f7
 docker kill $(docker ps -q)
 docker system prune -a
 docker container ls
