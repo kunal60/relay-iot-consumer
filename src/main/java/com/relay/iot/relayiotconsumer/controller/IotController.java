@@ -3,6 +3,9 @@ package com.relay.iot.relayiotconsumer.controller;
 import com.relay.iot.relayiotconsumer.data.Constants;
 import com.relay.iot.relayiotconsumer.service.IotOperationService;
 import com.relay.iot.relayiotconsumer.util.RequestValidator;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +30,11 @@ public class IotController {
         this.iotOperationService = iotOperationService;
     }
 
-
+    @Operation(summary = "Gives output of the operation provided")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Operation result"),
+            @ApiResponse(responseCode = "400", description = "Please provide from and to Dates and valid input")
+    })
     @GetMapping(value = "/operation/{operation}")
     public ResponseEntity<BigDecimal> getOperation(@PathVariable("operation") String operation,
                                                    @RequestParam(value = "from") Optional<String> from,
@@ -45,11 +52,9 @@ public class IotController {
         map.put(Constants.CLUSTER_ID, clusterId.isPresent() ? clusterId.get() : null);
 
 
-        return new ResponseEntity<>(iotOperationService.execute(operation, map), HttpStatus.OK);
+        return new ResponseEntity<>(iotOperationService.execute(operation, map), HttpStatus.CREATED);
 
     }
-
-
 
 
 }
