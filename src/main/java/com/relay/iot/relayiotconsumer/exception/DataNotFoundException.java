@@ -5,7 +5,6 @@ import lombok.Getter;
 /**
  * @author Kunal Malhotra
  */
-
 public class DataNotFoundException extends RuntimeException {
 
     @Getter
@@ -35,10 +34,6 @@ public class DataNotFoundException extends RuntimeException {
         this.code = code;
     }
 
-    public DataNotFoundException(DataNotFoundException.Code code, String message, Throwable cause) {
-        super(message, cause);
-        this.code = code;
-    }
 
     public String getUserMessage() {
         switch (code) {

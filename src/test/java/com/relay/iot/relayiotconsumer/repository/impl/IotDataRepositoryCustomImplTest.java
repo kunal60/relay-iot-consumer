@@ -50,7 +50,7 @@ public class IotDataRepositoryCustomImplTest {
         BigDecimal result = iotDataRepositoryCustom.findMaxValueByClusterIdAndTypeAndTimestampBetween(String.valueOf(1),
                 "TEMPERATURE", OffsetDateTime.parse("2021-12-23T18:18:55.479998Z"),
                 OffsetDateTime.parse("2022-01-23T18:18:59.479998Z"));
-        assertEquals(result.toString(), "4");
+        assertEquals("4", result.toString());
 
     }
 
@@ -60,7 +60,7 @@ public class IotDataRepositoryCustomImplTest {
         BigDecimal result = iotDataRepositoryCustom.findAvgValueByClusterIdAndTypeAndTimestampBetween(String.valueOf(1),
                 "TEMPERATURE", OffsetDateTime.parse("2021-12-23T18:18:55.479998Z"),
                 OffsetDateTime.parse("2022-01-23T18:18:59.479998Z"));
-        assertEquals(result.toString(), "2.5000");
+        assertEquals("2.5000", result.toString());
 
     }
 
@@ -69,7 +69,7 @@ public class IotDataRepositoryCustomImplTest {
         BigDecimal result = iotDataRepositoryCustom.findMedianValueByClusterIdAndTypeAndTimestampBetween(String.valueOf(1),
                 "TEMPERATURE", OffsetDateTime.parse("2021-12-23T18:18:55.479998Z"),
                 OffsetDateTime.parse("2022-01-23T18:18:59.479998Z"));
-        assertEquals(result.toString(), "2.5000");
+        assertEquals("2.5000", result.toString());
 
     }
 
