@@ -1,5 +1,6 @@
 package com.relay.iot.relayiotconsumer.controller;
 
+import com.relay.iot.relayiotconsumer.exception.UserException;
 import com.relay.iot.relayiotconsumer.model.AuthRequest;
 import com.relay.iot.relayiotconsumer.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class LoginController {
                     new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword())
             );
         } catch (Exception ex) {
-            throw new Exception("inavalid username/password");
+            throw new UserException(UserException.Code.USER_NOT_AUTHORIZED,"inavalid username/password");
         }
         return jwtUtil.generateToken(authRequest.getUserName());
     }

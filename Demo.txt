@@ -1,0 +1,46 @@
+Steps To run in windows:
+
+Make sure environment variale is Java11
+
+
+Path: C:\kafka_2.11-1.0.1\bin\windows
+
+start zookeeper:
+zookeeper-server-start.bat C:\kafka_2.11-1.0.1\config\zookeeper.properties
+
+Delete logs:
+C:\tmp\kafka-logs
+
+start kafkaserver:
+kafka-server-start.bat C:\kafka_2.11-1.0.1\config\server.properties
+kafka-server-start.bat C:\kafka_2.11-1.0.1\config\server1.properties
+kafka-server-start.bat C:\kafka_2.11-1.0.1\config\server2.properties
+
+Create Topic
+kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 -topic iot-data
+
+To list all topics:
+kafka-topics.bat --list --zookeeper localhost:2181
+
+Start MongoDataBase: mongod
+
+Run the simulator api application
+
+Run this application
+
+
+#Some Useful Docker commands
+
+docker kill $(docker ps -q)
+docker system prune -a
+docker container ls
+docker image ls
+
+#stop a container
+docker stop 8872fe163331
+#Remove a stopped container
+docker container rm 8872fe163331
+
+docker image rm 788b222dc8f7
+
+

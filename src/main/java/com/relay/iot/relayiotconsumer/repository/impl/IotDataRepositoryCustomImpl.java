@@ -25,9 +25,9 @@ public class IotDataRepositoryCustomImpl implements IotRepositoryCustom {
 
     private final MongoTemplate mongoTemplate;
 
-    private static final String TIME_STAMP= "timestamp";
+    private static final String TIME_STAMP = "timestamp";
 
-    private static final String VALUE= "value";
+    private static final String VALUE = "value";
 
     @Autowired
     public IotDataRepositoryCustomImpl(MongoTemplate mongoTemplate) {
@@ -46,7 +46,7 @@ public class IotDataRepositoryCustomImpl implements IotRepositoryCustom {
         AggregationOperation sort = Aggregation.sort(Sort.Direction.ASC, VALUE);
         AggregationOperation limit = Aggregation.limit(1);
         List<AggregationOperation> operationsList = new ArrayList<>();
-        if (clusterId != null ) {
+        if (clusterId != null) {
             operationsList.add(Aggregation.match(Criteria.where("clusterId").is(Long.valueOf(clusterId))));
         }
         if (StringUtils.hasText(eventType)) {
@@ -62,7 +62,7 @@ public class IotDataRepositoryCustomImpl implements IotRepositoryCustom {
         AggregationResults<IotEntity> aggregationResults = mongoTemplate.aggregate(aggregation,
                 Constants.IOT_TABLE_NAME, IotEntity.class);
         if (aggregationResults.getMappedResults().isEmpty()) {
-            throw new DataNotFoundException("Data not found");
+            throw new DataNotFoundException(DataNotFoundException.Code.EMPTY_DATA, "Data not found");
         } else {
             result = aggregationResults.getMappedResults().get(0).getValue();
         }
@@ -86,7 +86,7 @@ public class IotDataRepositoryCustomImpl implements IotRepositoryCustom {
         AggregationResults<IotEntity> aggregationResults = mongoTemplate.aggregate(aggregation,
                 Constants.IOT_TABLE_NAME, IotEntity.class);
         if (aggregationResults.getMappedResults().isEmpty()) {
-            throw new DataNotFoundException("Data not found");
+            throw new DataNotFoundException(DataNotFoundException.Code.EMPTY_DATA, "Data not found");
         } else {
             result = aggregationResults.getMappedResults().get(0).getValue();
         }
@@ -100,7 +100,7 @@ public class IotDataRepositoryCustomImpl implements IotRepositoryCustom {
         AggregationOperation match2 = Aggregation.match(Criteria.where(TIME_STAMP).lte(end));
         AggregationOperation unwind = Aggregation.unwind(VALUE);
         List<AggregationOperation> operationsList = new ArrayList<>();
-        if (clusterId != null ) {
+        if (clusterId != null) {
             operationsList.add(Aggregation.match(Criteria.where("clusterId").is(Long.valueOf(clusterId))));
         }
         if (StringUtils.hasText(eventType)) {
@@ -122,7 +122,7 @@ public class IotDataRepositoryCustomImpl implements IotRepositoryCustom {
         AggregationResults<IotEntity> aggregationResults = mongoTemplate.aggregate(aggregation,
                 Constants.IOT_TABLE_NAME, IotEntity.class);
         if (aggregationResults.getMappedResults().isEmpty()) {
-            throw new DataNotFoundException("Result not found");
+            throw new DataNotFoundException(DataNotFoundException.Code.EMPTY_DATA, "Data not found");
         } else {
             BigDecimal sum = aggregationResults.getMappedResults().stream().map(data -> data.getValue())
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
@@ -144,7 +144,7 @@ public class IotDataRepositoryCustomImpl implements IotRepositoryCustom {
         AggregationResults<IotEntity> aggregationResults = mongoTemplate.aggregate(aggregation,
                 Constants.IOT_TABLE_NAME, IotEntity.class);
         if (aggregationResults.getMappedResults().isEmpty()) {
-            throw new DataNotFoundException("Result not found");
+            throw new DataNotFoundException(DataNotFoundException.Code.EMPTY_DATA, "Data not found");
         } else {
             int mapSize = aggregationResults.getMappedResults().size();
             int middleElement = Math.floorDiv(mapSize, 2);

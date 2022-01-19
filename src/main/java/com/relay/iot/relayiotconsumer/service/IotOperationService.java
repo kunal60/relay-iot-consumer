@@ -1,5 +1,6 @@
 package com.relay.iot.relayiotconsumer.service;
 
+import com.relay.iot.relayiotconsumer.exception.InvalidInputException;
 import com.relay.iot.relayiotconsumer.repository.IotRepositoryCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,7 +32,7 @@ public class IotOperationService {
             case "MEDIAN":
                 return iotDataRepositoryCustomImpl.findMedianValueByClusterIdAndTypeAndTimestampBetween(clusterId, eventType, fromDate, toDate);
             default:
-                throw new IllegalArgumentException();
+                throw new InvalidInputException(InvalidInputException.Code.INVALID_INPUT, "get request is invalid");
         }
 
     }

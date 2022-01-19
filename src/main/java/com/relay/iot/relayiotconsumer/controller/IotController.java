@@ -1,6 +1,7 @@
 package com.relay.iot.relayiotconsumer.controller;
 
 import com.relay.iot.relayiotconsumer.data.Constants;
+import com.relay.iot.relayiotconsumer.exception.InvalidInputException;
 import com.relay.iot.relayiotconsumer.service.IotOperationService;
 import com.relay.iot.relayiotconsumer.util.RequestValidator;
 import io.swagger.v3.oas.annotations.Operation;
@@ -43,7 +44,7 @@ public class IotController {
                                                    @RequestParam("clusterId") Optional<String> clusterId) {
 
         if (!RequestValidator.isValidRequest(operation, from, to)) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            throw new InvalidInputException(InvalidInputException.Code.INVALID_INPUT, "Invalid request. from & to are mandatory params. And operation names are AVERAGE, MEDIAN, MAX, MIN in either upper orlower case");
         }
         Map<String, String> map = new HashMap<>();
         map.put(Constants.START_DATE, from.isPresent() ? from.get() : null);
