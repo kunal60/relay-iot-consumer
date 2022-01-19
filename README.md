@@ -40,4 +40,11 @@ curl --location --request GET 'http://localhost:8081/iotData/operation/max?from=
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrdW5hbCIsImV4cCI6MTY0MjU3NDQwMCwiaWF0IjoxNjQyNTM4NDAwfQ.QHfdCad3CkNOGsW5zOcX1Z012i_GWmtQiOGMz9RE5kQ'
 ````   
-   
+
+## Limitation of the current implementation and how it could be improved.   
+````curlrc
+Logging not implemented
+Smoketests not done
+Code coverage is Low so Far(Work in Progress)
+Was not able to test on docker due to my machie problem.
+````   
