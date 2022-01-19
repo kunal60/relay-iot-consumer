@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "b7e20833-a139-4cef-9f1b-9edc5690ffb2",
+		"name": "RelayRestCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8081/authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"kunal\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/iotData/operation/max?from=2022-01-17T17:09:38.706056800Z&to=2022-01-17T17:10:17.880046Z",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrdW5hbCIsImV4cCI6MTY0MjU3NDQwMCwiaWF0IjoxNjQyNTM4NDAwfQ.QHfdCad3CkNOGsW5zOcX1Z012i_GWmtQiOGMz9RE5kQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/iotData/operation/max?from=2022-01-17T17:09:38.706056800Z&to=2022-01-17T17:10:17.880046Z",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"iotData",
+						"operation",
+						"max"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2022-01-17T17:09:38.706056800Z"
+						},
+						{
+							"key": "to",
+							"value": "2022-01-17T17:10:17.880046Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/v3/api-docs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/v3/api-docs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v3",
+						"api-docs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
