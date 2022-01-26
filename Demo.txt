@@ -27,7 +27,7 @@ kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic iot-data
 
 curl --location --request POST 'http://localhost:8092/producer-api/events' --header 'Content-Type: application/json' --data-raw '[
     {
-        "total": 120,
+        "total": 2,
         "type": "TEMPERATURE",
         "heartBeat": 5,
         "id": 1,
@@ -35,7 +35,7 @@ curl --location --request POST 'http://localhost:8092/producer-api/events' --hea
         "clusterId": "1"
     },
     {
-        "total": 10,
+        "total": 2,
         "type": "HUMIDITY",
         "heartBeat": 10,
         "id": 2,
