@@ -22,6 +22,28 @@ kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --pa
 To list all topics:
 kafka-topics.bat --list --zookeeper localhost:2181
 
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic iot-data
+
+
+curl --location --request POST 'http://localhost:8092/producer-api/events' --header 'Content-Type: application/json' --data-raw '[
+    {
+        "total": 120,
+        "type": "TEMPERATURE",
+        "heartBeat": 5,
+        "id": 1,
+        "name": "Living Room Temp",
+        "clusterId": "1"
+    },
+    {
+        "total": 10,
+        "type": "HUMIDITY",
+        "heartBeat": 10,
+        "id": 2,
+        "name": "Living Room Humidity",
+        "clusterId": "1"
+    }
+]'
+
 Start MongoDataBase: mongod
 
 Run the simulator api application
